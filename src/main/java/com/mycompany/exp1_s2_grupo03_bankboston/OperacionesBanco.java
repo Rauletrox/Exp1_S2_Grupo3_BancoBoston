@@ -77,7 +77,7 @@ public class OperacionesBanco {
         
         clientes.add(nuevo);
         
-        System.out.println("\n🧾 Numero de " + nuevo.getCuenta().obtenerTipoCuenta() + "asignada: " + nuevo.getCuenta().getNumeroCuenta());
+        System.out.println("\n🧾 Numero de " + nuevo.getCuenta().obtenerTipoCuenta() + " asignada: " + nuevo.getCuenta().getNumeroCuenta());
         System.out.println("🎊Cliente registrado con exito.🎊");
     }  
         
