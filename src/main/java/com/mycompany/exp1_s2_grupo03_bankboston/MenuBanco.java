@@ -11,13 +11,13 @@ public class MenuBanco {
     // Metodo que muestra el menu principal con las opciones generales del sistema
     public static int mostrarMenuPrincipal(Scanner sc) {
         System.out.println("\n-------------------------------------------------------------");
-        System.out.println("                 🏦Bienvenido al " + Constantes.nombreBanco +"🏦                  ");
+        System.out.println("                 🏦Bienvenido al " + Constantes.NOMBRE_BANCO +"🏦                  ");
         System.out.println("-------------------------------------------------------------");
         System.out.println("\n¿Que deseas que hagamos por ti?");
         System.out.println("\n1. 👉 Hazte cliente"); /*Lo escribí así ya que así sale en muchos bancos actuales*/
         System.out.println("2. 🧾 Revisar mi cuenta");/*También lo cambié por lo mismo que lo anterior*/
         System.out.println("3. 👋 Salir");
-        return Validador.validarRangoEntero(sc, "\nSeleccione una opcion (1,2 ó 3): ", 1, 3);
+        return Validador.validarRangoEntero(sc, "\nSeleccione una opcion (1,2 o 3): ", 1, 3);
     }
     
     // Metodo que muesta el menu de operaciones interno disponible para un cliente ya validado con rut y contraseña

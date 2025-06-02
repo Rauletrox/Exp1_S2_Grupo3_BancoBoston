@@ -6,6 +6,6 @@ package com.mycompany.exp1_s2_grupo03_bankboston;
 
 /*Se definen una clase constante que contiene el nombre del banco*/
 public class Constantes {
-        public static final String nombreBanco = "Bank Boston";
+        public static final String NOMBRE_BANCO = "Bank Boston";
     
 }

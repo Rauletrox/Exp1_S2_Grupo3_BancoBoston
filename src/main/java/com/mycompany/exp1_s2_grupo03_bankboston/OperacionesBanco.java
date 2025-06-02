@@ -26,7 +26,7 @@ public class OperacionesBanco {
         System.out.println("            📝Sistema para el Registro del Cliente📝");
         System.out.println("-------------------------------------------------------------");
         
-        String rut = Validador.validarRut(sc, "\nIngrese Rut con puntos y guíon (Ej: 12.345.678-9) o 'c' para cancelar: ");
+        String rut = Validador.validarRut(sc, "\nIngrese Rut con puntos y guion (Ej: 12.345.678-9) o 'c' para cancelar: ");
         if (rut == null) return;
         
         if(Validador.esRutDuplicado(rut, clientes, "\nError: Cliente ya registrado con ese RUT. Cada cliente puede tener una sola cuenta contratada.")){
@@ -53,21 +53,31 @@ public class OperacionesBanco {
         System.out.println("\nSeleccione tipo de cuenta:");
         System.out.println("1. Cuenta Corriente 💳");
         System.out.println("2. Cuenta de Ahorro 💵");
-        int tipoCuenta = Validador.validarRangoEntero(sc, "Indique opción (1 ó 2): ", 1, 2);
+        System.out.println("3. Cuenta de Credito 💵");
+        
+        int tipoCuenta = Validador.validarRangoEntero(sc, "\nIndique opcion (1 - 3): ", 1, 3);
         
         Cliente nuevo = new Cliente(rut, nombre, apPaterno, apMaterno, 
                                    domicilio, comuna, telefono, contrasena);
 
         // Crear cuenta según tipo seleccionado
-        if(tipoCuenta == 1) {
-            nuevo.setCuenta(new CuentaCorriente());
-        } else {
-            nuevo.setCuenta(new CuentaAhorro());
+        switch (tipoCuenta) {
+            case 1:
+                nuevo.setCuenta(new CuentaCorriente());
+                break;
+            case 2:
+                nuevo.setCuenta(new CuentaAhorro());
+                break;
+            case 3:
+                nuevo.setCuenta(new CuentaCredito());
+                break;
+            default:
+                System.err.println("Opción no válida.");
         }
         
         clientes.add(nuevo);
         
-        System.out.println("🧾 Numero de cuenta asignada: " + nuevo.getCuenta().getNumeroCuenta());
+        System.out.println("\n🧾 Numero de " + nuevo.getCuenta().obtenerTipoCuenta() + "asignada: " + nuevo.getCuenta().getNumeroCuenta());
         System.out.println("🎊Cliente registrado con exito.🎊");
     }  
         
@@ -126,7 +136,7 @@ public class OperacionesBanco {
 
             switch (opcionMenu){
                 case 1: 
-                    cliente.mostrarDatos();
+                    cliente.mostrarInformacion();
                     continuar = deseaOtraOperacion(sc);   
                     if (!continuar){
                         System.exit(0);                    
@@ -156,7 +166,7 @@ public class OperacionesBanco {
                 case 5:
                     return;
                 case 6:
-                    System.out.println("Gracias por usar " + Constantes.nombreBanco);
+                    System.out.println("Gracias por usar " + Constantes.NOMBRE_BANCO);
                     System.exit(0);
             }
         }              
@@ -166,7 +176,7 @@ public class OperacionesBanco {
     public boolean deseaOtraOperacion(Scanner sc) {
         int opcion = Validador.validarRangoEntero(sc, "\n¿Desea realizar otra operacion? (1. Si / 2. No): ", 1, 2);
         if (opcion == 2) {
-            System.out.println("Gracias por usar " + Constantes.nombreBanco);
+            System.out.println("Gracias por usar " + Constantes.NOMBRE_BANCO);
             return false;
         }
         return opcion == 1;

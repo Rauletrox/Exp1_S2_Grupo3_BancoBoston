@@ -26,7 +26,7 @@ public class CuentaCorriente extends Cuenta {
         } 
         
          /*Aquí voy a colocar un formateo de numero para que nos muestre el $ y el punto*/
-    NumberFormat pesos=NumberFormat.getCurrencyInstance();
+        NumberFormat pesos=NumberFormat.getCurrencyInstance();
         
         int saldoDisponible = saldo + LIMITE_SOBREGIRO;
         if (monto > saldoDisponible) {

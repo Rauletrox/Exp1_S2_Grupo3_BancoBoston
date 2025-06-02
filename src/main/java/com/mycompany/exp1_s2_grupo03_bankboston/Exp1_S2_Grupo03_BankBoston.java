@@ -41,7 +41,7 @@ public class Exp1_S2_Grupo03_BankBoston {
                     break;
                 case 3:
                     // Salida del sistema
-                    System.out.println("Gracias por usar " + Constantes.nombreBanco);
+                    System.out.println("Gracias por usar " + Constantes.NOMBRE_BANCO);
                     continuarSistema = false;
             }
         }

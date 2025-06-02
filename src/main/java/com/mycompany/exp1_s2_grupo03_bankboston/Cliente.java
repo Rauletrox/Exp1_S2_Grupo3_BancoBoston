@@ -11,7 +11,7 @@ import java.text.NumberFormat;
 
 /*------Aquí voy a modificar la clase Cliente para que extienda de persona
 Nos permite heredar de persona------------------------------------------------*/
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Mostrable {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private String domicilio;
@@ -35,20 +35,21 @@ public class Cliente extends Persona {
     /* NUEVO--> Implementación del método abstracto*/
     @Override
     public String obtenerIdentificacionCompleta() {
-        return nombre + " " + apellidoPaterno + " " + apellidoMaterno + " (" + rut + ")";
+        return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
     }
     
     /*Aquí voy a colocar un formateo de numero para que nos muestre el $ y el punto*/
     NumberFormat pesos=NumberFormat.getCurrencyInstance();
     
-    //NUEVO--> Implementación de la interfaz
+    //NUEVO--> Implementación de la interfaz para mostrar los datos del cliente
     @Override
     public void mostrarInformacion() {
         System.out.println("\nNombre completo del cliente: " + obtenerIdentificacionCompleta());
+        System.out.println("Rut del cliente: " + rut);
         System.out.println("Domicilio: " + domicilio + ", comuna: " + comuna);
         System.out.println("Telefono: " + telefono);
-        System.out.println("Numero de cuenta: " + cuenta.getNumeroCuenta());
         System.out.println("Tipo de cuenta: " + cuenta.obtenerTipoCuenta());
+        System.out.println("Numero de cuenta: " + cuenta.getNumeroCuenta());
         System.out.println("Saldo actual: " + pesos.format(cuenta.getSaldo()));
     }
     
@@ -82,15 +83,4 @@ public class Cliente extends Persona {
     public String getContrasena(){
         return contrasena;
     }
-    
-    
-    // Metodo para mostrar los datos del cliente
-    public void mostrarDatos(){
-        System.out.println("\nNombre completo del cliente: " + nombre + " " + apellidoPaterno + " " + apellidoMaterno);
-        System.out.println("Rut del cliente: " + rut);
-        System.out.println("Domicilio: " + domicilio + ", comuna: " + comuna);
-        System.out.println("Telefono: " + telefono);
-        System.out.println("Numero de cuenta: " + cuenta.getNumeroCuenta());
-        System.out.println("Saldo actual: " + pesos.format(cuenta.getSaldo()));
-    }    
 }
